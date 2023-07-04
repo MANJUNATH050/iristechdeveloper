@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <title>
+
+    </title>
+    <style>
+        *{
+    padding: 0%;
+    box-sizing: border-box;
+    margin: 0%;
+}
+body{
+    display: flex;
+    height: 100vh;
+    text-align: center;
+    align-items: center;
+    background-color: rgb(7, 4, 6);
+}
+.container{
+    width: 40%;
+    min-width: 600px;
+    background-color: aliceblue;
+    max-height: 100px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px royalblue;
+    align-items: center;
+  
+
+}
+#newtask{
+    position: relative;
+    padding:10px  20px 90px;
+    display:flex;
+    justify-content: space-between;
+
+}
+#add{
+     width: 20%;
+    margin-top: 10px;
+    height: 50px;
+    padding: 16px 0;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color:#7c4dff;
+}
+#taskinfo{
+    
+    border-color: aqua;
+    width: 70%;
+
+}
+#tasklist{
+    margin-bottom: 9px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.task{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(8, 219, 234);
+    height: 45px;
+    margin-bottom: 9px;
+    padding: 5px 10px;
+    cursor:pointer;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #6a0082;
+}
+.del{
+    width: 25px;
+    size: 25px;
+    color: #e32222;
+    border-radius: 5px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    outline: none;
+}
+    </style>
+    <head>
+<link rel="stylesheet" href="todo.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+<div class="container">
+    <div id="newtask">
+        <input type="text" id="taskinfo" placeholder="Task to do">
+        <button id="add">ADD</button>
+    </div>
+    <div id="tasklist"></div>
+
+</div>
+<script>
+    let todoele=document.getElementById("taskinfo")
+    let tasklist=document.getElementById("tasklist")
+
+    document.getElementById("add").onclick=function(){
+        if(todoele.value.length==0){
+
+            alert("enter your work")
+        }
+        else{
+    
+            tasklist.innerHTML = tasklist.innerHTML+`
+            <div class="task">
+            <span id="work">${todoele.value}</span>
+            <button class="del"> <i class="fa fa-trash"></i></button>
+            </div>`
+            let alltasks=document.querySelectorAll('.del')
+            for(i=0;i<alltasks.length;i++){
+                alltasks[i].onclick=function(){
+                    console.log(this)
+                    console.log(this.parentNode)
+                    this.parentNode.remove()
+                }
+            }
+            todoele.value=""
+
+
+        }
+        
+    }
+
+
+
+
+
+
+
+</script>
+    </body>
+</html>
