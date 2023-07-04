@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Temperature Converter</title>
+</head>
+<link rel="stylesheet"  href="temp.css">
+<body>
+<h1>TEMPERATURE CONVERTER</h1>
+
+  <div id="converter-form">
+    <div class="input-group">
+      <label for="temperature">Temperature:</label>
+      <input type="text" id="temperature" placeholder="Enter temperature" />
+    </div>
+    <div class="input-group">
+      <label for="unit">Unit:</label>
+      <select id="unit">
+        <option value="celsius">Celsius</option>
+        <option value="fahrenheit">Fahrenheit</option>
+        <option value="kelvin">Kelvin</option>
+      </select>
+    </div>
+    <button onclick="convertTemperature()">Convert</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function convertTemperature() {
+      var temperatureInput = document.getElementById("temperature");
+      var unitInput = document.getElementById("unit");
+      var resultOutput = document.getElementById("result");
+
+      var temperature = parseFloat(temperatureInput.value);
+      var unit = unitInput.value.toLowerCase();
+
+      if (isNaN(temperature)) {
+        resultOutput.innerHTML = "Invalid temperature! Please enter a valid number.";
+        return;
+      }
+
+      var convertedTemp;
+      var convertedUnit;
+
+      if (unit === "celsius") {
+        convertedTemp = (temperature * 9/5) + 32;
+        convertedUnit = "Fahrenheit";
+      } else if (unit === "fahrenheit") {
+        convertedTemp = (temperature - 32) * 5/9;
+        convertedUnit = "Celsius";
+      } else if (unit === "kelvin") {
+        convertedTemp = temperature - 273.15;
+        convertedUnit = "Celsius";
+      }
+
+      resultOutput.innerHTML = "The converted temperature is: " + convertedTemp.toFixed(2) + " " + convertedUnit;
+    }
+  </script>
+</body>
+</html>
